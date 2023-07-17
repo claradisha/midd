@@ -101,6 +101,7 @@
 </head>
 
 <body>
+
   <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="<?= base_url('assets/'); ?>http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
@@ -135,8 +136,10 @@
                       </a>
                     </li>
                     <li>
-                      <div id="widgetDiv" draggable="true" ondragstart="dragStart(event)" data-widget="clock" onmousedown="handleMouseDown(event)">
-                      </div>
+                      <a href="<?= base_url() ?>designLayout/post/<?= $playlistId ?>">
+                        <button id="widgetDiv" name="widget" ondragstart="dragStart(event)" data-widget="clock" onmousedown="handleMouseDown(event)">
+                        </button>
+                      </a>
                     </li>
                     <li>
                       <button id="widgetType" name="widgetType" draggable="true" ondragstart="dragStart(event)" value="countdown">Countdown</button>
@@ -175,52 +178,7 @@
 
     </div>
 
-    <script>
-      // WARNING: For GET requests, body is set to null by browsers.
-      var data = "layoutId=94";
 
-      var xhr = new XMLHttpRequest();
-      xhr.withCredentials = true;
-
-      xhr.addEventListener("readystatechange", function() {
-        if (this.readyState === 4) {
-          console.log(this.responseText);
-        }
-      });
-
-      xhr.open("GET", "https://xibo.yntkts.my.id/api/layout?layoutId=94&embed=regions%2Cplaylists%2Cwidgets%2Cwidget_validity%2Ctags%2Cpermissions%2Cactions");
-      xhr.setRequestHeader("Authorization", "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJpbmZvQHhpYm9zaWduYWdlLmNvbSIsImF1ZCI6ImFjOWZiN2Y3NGM3OTFiNmNmMTIwYzE0NWExYTY3NThiZDQxY2M1MDEiLCJqdGkiOiIzNzEzZjUzYzY3MTY4YjIzZWYxM2M2ODljNWMyNjQxNjlmNzQzY2ZjMzQ3YjdmMzIzZDA2NTM4ZmQxNWJhMDM1MjhmMzUxMjY0MTU0ZGQ3ZiIsImlhdCI6MTY4OTU1MTEwNCwibmJmIjoxNjg5NTUxMTA0LCJleHAiOjE2ODk1NTQ3MDQsInN1YiI6IjEiLCJzY29wZXMiOlsiYWxsIl19.c_SE9HwtLgtOMLAlWeyG-LKntOyZtOhHiPUEXyEDetredcrGUSzz8in8wuPodqN_6clwuntxzx32VVtG02RQSQ4L3KM0MYrTmvEpi4nEAOiool9U4-0mIVIXfQGdsyZ9sOApDFtrlMAFSWLlWN6QYwDHqGZz0WZX1Zon8lXCzTU_jaQcj6SUQGjE1zRl42H05p3JnRKZC5lpSJwBerFEQnWRJ1vt91NfCY1aEmIKnXS90on6wLJgT8mrUugGbgVONE3idjzQZ7CEcOz-Af-XpZ2XoXZ223lLbEUPOVyVtbvqWjbnNekiTDuncVQvJHwnuvKCiUkI1mZjfpmoGI2YOw");
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      // WARNING: Cookies will be stripped away by the browser before sending the request.
-      // xhr.setRequestHeader("Cookie", "PHPSESSID=ndq1jsnq35ptkf9tr293curkdm");
-
-      // xhr.onreadystatechange = function() {
-      //   if (xhr.readyState === 4 && xhr.status === 200) {
-      //     var widgetData = JSON.parse(xhr.responseText);
-      //     renderWidgetPreview(widgetData);
-      //   }
-      // };
-
-      xhr.send(data);
-
-      // var xhr = new XMLHttpRequest();
-      // xhr.open("GET", "https://xibo.yntkts.my.id/api/layout?layoutId=94&embed=regions%2Cplaylists%2Cwidgets%2Cwidget_validity%2Ctags%2Cpermissions%2Cactions", true);
-      // xhr.onreadystatechange = function() {
-      //   if (xhr.readyState === 4 && xhr.status === 200) {
-      //     var widgetData = JSON.parse(xhr.responseText);
-      //     renderWidgetPreview(widgetData);
-      //   }
-      // };
-      // xhr.send();
-
-      // Membangun tampilan preview widget
-      function renderWidgetPreview(widgetData) {
-        var widgetPreview = document.getElementById("dropzone");
-        widgetPreview.innerHTML = "<h2>" + widgetData.title + "</h2>";
-        widgetPreview.innerHTML += "<p>" + widgetData.description + "</p>";
-        widgetPreview.innerHTML += "<img src='" + widgetData.imageUrl + "' alt='Widget Preview'>";
-      }
-    </script>
     <!-- jquery
 		============================================ -->
     <script src="<?= base_url('assets/'); ?>js/vendor/jquery-1.12.4.min.js"></script>

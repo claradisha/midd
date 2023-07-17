@@ -53,7 +53,6 @@ class LayoutController extends CI_Controller
 
     curl_close($curl);
     $result = json_decode($response);
-    // print_r ($result);
 
     $data['layout'] = $result;
 
@@ -120,6 +119,11 @@ class LayoutController extends CI_Controller
     $this->load->view('layout/v_add_layout');
     $this->load->view('template/footer');
   }
+  // public function designLayout () 
+  // {
+
+  // }
+
 }
 
 

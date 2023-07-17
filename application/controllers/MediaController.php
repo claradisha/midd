@@ -17,7 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 require 'vendor/autoload.php';
-require 'config.php';
+
 
 use Aws\S3\S3Client;
 

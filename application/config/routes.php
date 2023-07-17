@@ -59,8 +59,8 @@ $route['layout/postTemplate'] = 'LayoutController/postTemplate';
 $route['layout/postLayout'] = 'LayoutController/postLayout';
 $route['layout/formAddLayout'] = 'LayoutController/formAddLayout';
 
-$route['layout/designLayout'] = 'DesignLayoutController';
-$route['designLayout/post'] = 'DesignLayoutController/postWidget';
+$route['layout/designLayout/(:any)'] = 'DesignLayoutController/index/$1';
+$route['designLayout/post/(:any)'] = 'DesignLayoutController/postWidget/$1';
 
 
 $route['schedule'] = 'ScheduleController/';
