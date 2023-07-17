@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -55,14 +55,27 @@ $route['proses_regis'] = 'AuthController/proses_regis';
 
 $route['layout'] = 'LayoutController';
 $route['layout/addLayout'] = 'LayoutController/addLayout';
+$route['layout/postTemplate'] = 'LayoutController/postTemplate';
 $route['layout/postLayout'] = 'LayoutController/postLayout';
+$route['layout/formAddLayout'] = 'LayoutController/formAddLayout';
 
-$route['schedule'] = 'ScheduleController';
+$route['layout/designLayout'] = 'DesignLayoutController';
+$route['designLayout/post'] = 'DesignLayoutController/postWidget';
+
+
+$route['schedule'] = 'ScheduleController/';
 $route['schedule/addevent'] = 'ScheduleController/addevent';
+$route['testcalendar'] = 'ScheduleController/test_calendar';
+
+$route['addSchedule'] = 'AddScheduleController';
+$route['addSchedule/postSchedule'] = 'AddScheduleController/postSchedule';
+
 
 $route['media'] = 'MediaController';
 $route['media/addMedia'] = 'MediaController/addMedia';
 $route['media/postMedia'] = 'MediaController/postMedia';
+
+$route['cekAws'] = 'MediaController/Test';
 
 
 $route['404_override'] = '';

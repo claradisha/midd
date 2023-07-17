@@ -191,7 +191,7 @@
                                               <td><?= $key->orientation ?></td>
                                               <td><?= $key->status ?></td>
                                               <td>
-                                                <button>Edit</button>
+                                              <a href="<?= base_url()?>layout/designLayout"><button>Edit</button></a>
                                                 <button>delete</button>
                                               </td>
                                             </tr>
