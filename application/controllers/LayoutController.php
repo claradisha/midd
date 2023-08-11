@@ -151,6 +151,32 @@ class LayoutController extends CI_Controller
     redirect("layout");
   }
 
+  public function checkoutLayout($layout_id)
+  {
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => 'https://xibo.yntkts.my.id/api/layout/checkout/' . $layout_id,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'PUT',
+      CURLOPT_HTTPHEADER => array(
+        'Authorization: ' . $this->session->userdata('access_token'),
+        'Cookie: PHPSESSID=ie37cib18bd8civmkb672fcdu5'
+      ),
+    ));
+
+    $response = curl_exec($curl);
+
+    curl_close($curl);
+
+    redirect("layout");
+  }
   public function deleteLayout($idlayout)
   {
 

@@ -59,6 +59,7 @@ $route['layout/postTemplate'] = 'LayoutController/postTemplate';
 $route['layout/postLayout'] = 'LayoutController/postLayout';
 $route['layout/formAddLayout'] = 'LayoutController/formAddLayout';
 $route['layout/publish/(:any)'] = 'LayoutController/publishLayout/$1';
+$route['layout/checkout/(:any)'] = 'LayoutController/checkoutLayout/$1';
 $route['layout/delete/(:any)'] = 'LayoutController/deleteLayout/$1';
 
 $route['layout/designLayout/(:any)'] = 'DesignLayoutController/index/$1';

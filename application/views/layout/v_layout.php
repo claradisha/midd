@@ -196,6 +196,7 @@
                       <td>
                         <a href=" <?= base_url() ?>layout/designLayout/<?= $key->layoutId ?>"><button>Edit</button></a>
                         <a href="<?= base_url() ?>layout/publish/<?= $key->layoutId ?>"><button>Publish</button></a>
+                        <a href="<?= base_url() ?>layout/checkout/<?= $key->layoutId ?>"><button>Checkout</button></a>
                         <a href="<?= base_url() ?>layout/delete/<?= $key->layoutId ?>"><button>delete</button></a>
                         </select>
                       </td>
