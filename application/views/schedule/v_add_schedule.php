@@ -136,31 +136,22 @@
                             </div>
                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                               <div class="form-select-list">
-                                <select class="form-control custom-select-value" name="displayName" id="displayName">
+                                <select data-placeholder="Please select a Display for this Event" class="chosen-select" multiple="" tabindex="-1" id="displayName" name="displayName">
+
                                   <?php foreach ($display as $key) { ?>
+
                                     <option value="<?= $key->displayGroupId ?>"><?= $key->display ?></option>
-                                    <!-- <option>Display 2</option>
-                                <option>Display 3</option>
-                                <option>Display 4</option> -->
+
                                   <?php } ?>
+
                                 </select>
+
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="form-group-inner">
                           <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                              <label class="login2 pull-right pull-right-pro">Dayparting</label>
-                            </div>
-                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                              <div class="form-select-list">
-                                <select class="form-control custom-select-value" name="account">
-                                  <option>Custom</option>
-                                  <option>Always</option>
-                                </select>
-                              </div>
-                            </div>
                           </div>
                         </div>
                         <div class="form-group-inner">
@@ -199,7 +190,8 @@
                                 <!-- <select id="js-example-basic-hide-search-multi" class="form-control custom-select-value" name="account">
                                 
                             </select> -->
-                                <select data-placeholder="Please select a Layout for this Event to show..." class="chosen-select" multiple="" tabindex="-1" id="layoutName" name="layoutName">
+
+                                <select data-placeholder="Please select a Layout for this Event to show..." class="form-control custom-select-value" id="layoutName" name="layoutName">
                                   <?php foreach ($layout as $key) { ?>
 
                                     <option value=<?= $key->campaignId ?>><?= $key->layout ?></option>
@@ -224,7 +216,7 @@
                               <div class="col-lg-3"></div>
                               <div class="col-lg-9">
                                 <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                  <button class="btn btn-white" type="submit">Cancel</button>
+                                  <a href="<?= base_url() ?>schedule"><button class="btn btn-white" type="submit">Cancel</button></a>
                                   <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save </button>
                                 </div>
                               </div>
@@ -324,9 +316,7 @@
   <!-- main JS
 		============================================ -->
   <script src="<?= base_url('assets/'); ?>js/main.js"></script>
-  <!-- tawk chat JS
-		============================================ -->
-  <script src="<?= base_url('assets/'); ?>js/tawk-chat.js"></script>
+
 </body>
 
 </html>

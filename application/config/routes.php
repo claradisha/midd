@@ -58,12 +58,17 @@ $route['layout/addLayout'] = 'LayoutController/addLayout';
 $route['layout/postTemplate'] = 'LayoutController/postTemplate';
 $route['layout/postLayout'] = 'LayoutController/postLayout';
 $route['layout/formAddLayout'] = 'LayoutController/formAddLayout';
+$route['layout/publish/(:any)'] = 'LayoutController/publishLayout/$1';
+$route['layout/delete/(:any)'] = 'LayoutController/deleteLayout/$1';
 
 $route['layout/designLayout/(:any)'] = 'DesignLayoutController/index/$1';
-$route['designLayout/post/(:any)'] = 'DesignLayoutController/postWidget/$1';
+$route['designLayout/Clock/(:any)/(:any)'] = 'DesignLayoutController/postClock/$1/$2';
+$route['postMedia/(:any)/(:any)'] = 'DesignLayoutController/postMedia/$1/$2';
+$route['designLayout/Media/(:num)/(:num)'] = 'DesignLayoutController/postMedia/$1/$2';
 
 
-$route['schedule'] = 'ScheduleController/';
+
+$route['schedule'] = 'ScheduleController';
 $route['schedule/addevent'] = 'ScheduleController/addevent';
 $route['testcalendar'] = 'ScheduleController/test_calendar';
 
@@ -74,6 +79,7 @@ $route['addSchedule/postSchedule'] = 'AddScheduleController/postSchedule';
 $route['media'] = 'MediaController';
 $route['media/addMedia'] = 'MediaController/addMedia';
 $route['media/postMedia'] = 'MediaController/postMedia';
+$route['media/Video'] = 'MediaController/PostVideo';
 
 $route['cekAws'] = 'MediaController/Test';
 

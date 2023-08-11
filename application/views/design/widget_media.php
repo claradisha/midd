@@ -92,15 +92,7 @@
   <!-- End Left menu area -->
   <!-- Start Welcome area -->
   <div class="all-content-wrapper">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div class="logo-pro">
-            <a href="index.html"><img class="main-logo" src="<?= base_url('assets/'); ?>img/logo/logo.png" alt="" /></a>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <div class="header-advance-area">
 
     </div>
@@ -115,7 +107,7 @@
             <div class="sparkline12-list">
               <div class="sparkline12-hd">
                 <div class="main-sparkline12-hd">
-                  <h1>Add Layout</h1>
+                  <h1>Edit Layout</h1>
                 </div>
               </div>
               <div class="sparkline12-graph">
@@ -123,69 +115,83 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="all-form-element-inner">
-                        <form method="post" action="<?= base_url() ?>layout/postLayout">
-                          <div class="form-group-inner">
-                            <div class="row">
-                              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                <label class="login2 pull-right pull-right-pro">Name</label>
-                              </div>
-                              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                <input type="text" class="form-control" id="layoutName" name="layoutname" />
-                                <p>The name of the layout (1 - 50 character)</p>
-                              </div>
+                        <!-- <form method="post" action=""> -->
+                        <div class="form-group-inner">
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                              <label class="login2 pull-right pull-right-pro">Name</label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                              <input type="text" class="form-control" id="layoutName" name="layoutname" />
                             </div>
                           </div>
-
-                          <div class="form-group-inner">
-                            <div class="row">
-                              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                <label class="login2 pull-right pull-right-pro">Template</label>
-                              </div>
-                              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                <label>
-                                  <input type="radio" name="templateLayout" id="templateLayout" value="0|full-screen">
-                                  <img src="<?= base_url('assets/'); ?>img/template/full screen.png" alt="Option 1">
-                                </label>
-
-                                <label>
-                                  <input type="radio" name="templateLayout" id="templateLayout" value="0|l-bar-left">
-                                  <img src="<?= base_url('assets/'); ?>img/template/L Shape Left.png" alt="Option 2">
-                                </label>
-
-                                <label>
-                                  <input type="radio" name="templateLayout" id="templateLayout" value="0|l-bar-right">
-                                  <img src="<?= base_url('assets/'); ?>img/template/L Shape Right.png" alt="Option 2">
-                                </label>
-                                <p>Choose one template for your Layout</p>
-                              </div>
+                        </div>
+                        <div class="form-group-inner">
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                              <label class="login2 pull-right pull-right-pro">Id</label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                              <textarea class="form-control" id="description" style="height: 100px" name="layoutdescription"></textarea>
+                              <!-- <p>add optional description on the layout</p> -->
                             </div>
                           </div>
+                        </div>
+                        <div class="form-group-inner">
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                              <label class="login2 pull-right pull-right-pro">Playlist</label>
+                            </div>
+                            <div class="login-horizental cancel-wp pull-left form-bc-ele">
+                              <a href="<?= base_url() ?>designLayout/Clock/<?= $playlistId ?>/<?= $layoutId ?>">
+                                <button class="btn btn-white" type="submit">Clock</button>
+                              </a>
+                              <a href="">
+                                <button class="btn btn-white" type="button">Calendar</button>
+                              </a>
+                              <a href="">
+                                <button class="btn btn-white" type="button">Embed</button>
+                              </a>
+                              <a href="">
+                                <button class="btn btn-white" type="button">Media</button>
+                              </a>
 
-                          <div class="form-group-inner">
-                            <div class="row">
-                              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                <label class="login2 pull-right pull-right-pro">Description</label>
-                              </div>
-                              <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                <textarea class="form-control" id="description" style="height: 100px" name="layoutdescription"></textarea>
-                                <p>add optional description on the layout</p>
-                              </div>
+                              <p>Click the widget that you wanna put in your layout playlist</p>
+                            </div>`
+                          </div>
+                        </div>
+                        <div class="form-group-inner">
+                          <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                              <label class="login2 pull-right pull-right-pro">Media</label>
+                            </div>
+                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                              <input type="text" class="form-control" id="layoutName" name="layoutname" />
+                              <p>Please sellect one media that you wanna to assign in the layout</p>
+                              <a href="<?= base_url() ?>designLayout/Media/<?= $playlistId ?>/<? $layoutId ?>">
+                                <button class="btn btn-green">Save</button>
+                              </a>
                             </div>
                           </div>
-                          <div class="form-group-inner">
-                            <div class="login-btn-inner">
-                              <div class="row">
-                                <div class="col-lg-3"></div>
-                                <div class="col-lg-9">
-                                  <div class="login-horizental cancel-wp pull-right form-bc-ele">
-                                    <a href="<?= base_url() ?>layout"><button class="btn btn-white" type="submit">Cancel</button></a>
+                        </div>
+                        <div class="form-group-inner">
+                          <div class="login-btn-inner">
+                            <div class="row">
+                              <div class="col-lg-3"></div>
+                              <div class="col-lg-9">
+                                <div class="login-horizental cancel-wp pull-right form-bc-ele">
+                                  <a href="<?= base_url() ?>layout">
+                                    <button class="btn btn-white" type="submit">Cancel</button>
+                                  </a>
+                                  <a href="<?= base_url() ?>layout">
                                     <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save</button>
-                                  </div>
+                                  </a>
                                 </div>
                               </div>
                             </div>
                           </div>
-                        </form>
+                        </div>
+                        <!-- </form> -->
                       </div>
                     </div>
                   </div>
@@ -198,6 +204,7 @@
     </div>
 
   </div>
+
 
 
 
@@ -249,6 +256,8 @@
   <!-- main JS
 		============================================ -->
   <script src="<?= base_url('assets/'); ?>js/main.js"></script>
+  <!-- tawk chat JS
+		============================================ -->
 
 </body>
 

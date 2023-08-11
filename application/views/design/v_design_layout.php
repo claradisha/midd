@@ -136,14 +136,16 @@
                       </a>
                     </li>
                     <li>
-                      <a href="<?= base_url() ?>designLayout/post/<?= $playlistId ?>">
+                      <a href="<?= base_url() ?>designLayout/Clock/<?= $playlistId ?>">
                         <button id="widgetDiv" name="widget" ondragstart="dragStart(event)" data-widget="clock" onmousedown="handleMouseDown(event)">
                         </button>
                       </a>
                     </li>
                     <li>
-                      <button id="widgetType" name="widgetType" draggable="true" ondragstart="dragStart(event)" value="countdown">Countdown</button>
-                      <!-- <a href="#"><i class="fa fa-pencil"></i> Draft</a> -->
+                      <a href="<?= base_url() ?>designLayout/Clock/<?= $playlistId ?>">
+                        <button id="widgetType" name="widgetType" draggable="true" ondragstart="dragStart(event)" value="countdown">Countdown</button>
+                        <!-- <a href="#"><i class="fa fa-pencil"></i> Draft</a> -->
+                      </a>
                     </li>
                     <li>
                       <button id="widgetType" name="widgetType" draggable="true" ondragstart="dragStart(event)" value="caledar">Calendar</button>
@@ -165,7 +167,9 @@
                   <div class="pull-right">
                     <div class="btn-group active-hook">
                       <button class="btn btn-default"><i class="fa fa-edit"></i> Save</button>
-                      <button class="btn btn-default"><i class="fa fa-trash"></i> Discard</button>
+                      <a href="<?= base_url() ?>layout">
+                        <button class="btn btn-default"><i class="fa fa-trash"></i> Cancel</button>
+                      </a>
                     </div>
                   </div>
                 </div>

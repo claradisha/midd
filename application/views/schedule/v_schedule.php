@@ -86,40 +86,6 @@
 
       calendar.render();
     });
-
-
-
-
-
-
-
-    // document.addEventListener('DOMContentLoaded', function() {
-    //   var calendarEl = document.getElementById('calendar');
-
-    //   // fetch('https://xibo.yntkts.my.id/api/schedule/data/events?from=2022-09-01%2000%3A00%3A00&to=2023-10-01%2000%3A00%3A00&displayGroupIds[]=-1')
-    //   //   .then(response => response.json())
-    //   //   .then(data => {
-    //   //     // Gunakan data yang diterima
-    //   //     console.log(data);
-    //   var calendar = new FullCalendar.Calendar(calendarEl, {
-    //     schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-    //     initialView: 'dayGridMonth',
-    //     initialDate: '2023-07-07',
-    //     headerToolbar: {
-    //       left: 'prev,next today',
-    //       center: 'title',
-    //       right: 'dayGridMonth,timeGridWeek,timeGridDay'
-    //     },
-    //     events: data // Menggunakan data sebagai sumber events
-    //   });
-
-    //   calendar.render();
-    // });
-    //     .catch(error => {
-    //       // Tangani kesalahan jika ada
-    //       console.error(error);
-    //     });
-    // });
   </script>
 
 </head>
@@ -174,6 +140,8 @@
       </div>
     </div>
   </div>
+
+
 
 
 

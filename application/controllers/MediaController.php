@@ -33,11 +33,12 @@ class MediaController extends CI_Controller
   public function index()
   {
 
+    $page_number = 2; // You can adjust this value to get data from different pages.
 
     $curl = curl_init();
 
     curl_setopt_array($curl, array(
-      CURLOPT_URL => 'https://xibo.yntkts.my.id/api/library',
+      CURLOPT_URL => 'https://xibo.yntkts.my.id/api/library?page=' . $page_number,
       CURLOPT_RETURNTRANSFER => true,
       CURLOPT_ENCODING => '',
       CURLOPT_MAXREDIRS => 10,
@@ -75,39 +76,9 @@ class MediaController extends CI_Controller
 
   public function postMedia()
   {
-
-    // $curl = curl_init();
-
-    // curl_setopt_array($curl, array(
-    //   CURLOPT_URL => 'https://xibo.yntkts.my.id/api/library',
-    //   CURLOPT_RETURNTRANSFER => true,
-    //   CURLOPT_ENCODING => '',
-    //   CURLOPT_MAXREDIRS => 10,
-    //   CURLOPT_TIMEOUT => 0,
-    //   CURLOPT_FOLLOWLOCATION => true,
-    //   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    //   CURLOPT_CUSTOMREQUEST => 'POST',
-    //   CURLOPT_POSTFIELDS => array('files' => new CURLFILE('/C:/Users/Laquita Lalala/Downloads/08072023 snap.png'), 'name' => 'pan'),
-    //   CURLOPT_HTTPHEADER => array(
-    //     'Authorization: ' . $this->session->userdata('access_token'),
-    //     'Cookie: PHPSESSID=5u4n7gbe6g5pfvuvhpgm5moe9i'
-    //   ),
-    // ));
-
-    // $response = curl_exec($curl);
-    // echo $response;
-    // curl_close($curl);
-
-
-    $cfile = new CURLFile($this->S3->UploadImage($_FILES['urlMedia']), 'image/jpeg', $_POST['mediaName']);
-    $data = array(
-      'url' =>   $this->S3->UploadImage($_FILES['urlMedia']),
-      'type' => 'image',
-      'optionalName' => $_POST['mediaName']
-    );
+    $fileUploaded =  $this->S3->UploadImage($_FILES['mediaFile']);
 
     $curl = curl_init();
-
     curl_setopt_array($curl, array(
       CURLOPT_URL => 'https://xibo.yntkts.my.id/api/library/uploadUrl',
       CURLOPT_RETURNTRANSFER => true,
@@ -117,20 +88,74 @@ class MediaController extends CI_Controller
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'POST',
-      CURLOPT_POSTFIELDS => $data,
+      CURLOPT_POST => 1,
+      CURLOPT_POSTFIELDS => 'url=' . rawurlencode($fileUploaded) . '&type=image&optionalName=' . $_POST['mediaName'],
       CURLOPT_HTTPHEADER => array(
         'Authorization: ' . $this->session->userdata('access_token'),
         'Content-Type: application/x-www-form-urlencoded',
-        'Cookie: PHPSESSID=5u4n7gbe6g5pfvuvhpgm5moe9i'
+        'Cookie: PHPSESSID=7do57sb548ci31eiul6pupkagb'
       ),
     ));
 
     $response = curl_exec($curl);
 
     curl_close($curl);
-    print_r($data);
+    $result = json_decode($response);
+
+    if ($result->error == null) {
+      $this->session->set_flashdata('succ_msg', 'Berhasil menambahkan gambar!');
+      redirect('media');
+    } else {
+      $this->session->set_flashdata('error', 'Gagal menambahkan gambar!, ' . $result->message);
+      redirect('media');
+    }
   }
 
+  public function PostVideo()
+  {
+    // $cfile = new CURLFile($this->S3->UploadVideo($_FILES['urlMedia']), 'video/mp4', $_POST['mediaName']);
+    $fileUploaded =  $this->S3->UploadVideo($_FILES['mediaFile']);
+    // $data = array(
+    //   'url' =>   $this->S3->UploadVideo($_FILES['urlMedia']),
+    //   'type' => 'video',
+    //   'optionalName' => $_POST['mediaName']
+    // );
+
+    $curl = curl_init();
+    $results = array();
+
+    for ($i = 0; $i < 100; $i++) {
+      curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://xibo.yntkts.my.id/api/library/uploadUrl',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS =>  'url=' . rawurlencode($fileUploaded) . '&type=video&optionalName=' . $_POST['mediaName'],
+        CURLOPT_HTTPHEADER => array(
+          'Authorization: ' . $this->session->userdata('access_token'),
+          'Content-Type: application/x-www-form-urlencoded',
+          'Cookie: PHPSESSID=5u4n7gbe6g5pfvuvhpgm5moe9i'
+        ),
+      ));
+
+      $response = curl_exec($curl);
+      $results[] = json_decode($response);
+    }
+    curl_close($curl);
+
+    // print_r($result);
+    if ($results->error == null) {
+      $this->session->set_flashdata('succ_msg', 'Berhasil menambahkan gambar!');
+      redirect('media');
+    } else {
+      $this->session->set_flashdata('error', 'Gagal menambahkan gambar!, ' . $result->message);
+      redirect('media');
+    }
+  }
 
   public function Test()
   {

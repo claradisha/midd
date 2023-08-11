@@ -180,9 +180,9 @@
                     <tr>
                       <td></td>
                       <td>
-                        <a href="<?= base_url() ?>layout/designLayout/<?= $key->layoutId ?>">
-                          <?= $key->layoutId ?>
-                        </a>
+
+                        <?= $key->layoutId ?>
+
                       </td>
                       <td>
                         <?= $key->layout ?>
@@ -194,8 +194,10 @@
                       <td><?= $key->orientation ?></td>
                       <td><?= $key->status ?></td>
                       <td>
-                        <a href="<?= base_url() ?>layout/designLayout"><button>Edit</button></a>
-                        <button>delete</button>
+                        <a href=" <?= base_url() ?>layout/designLayout/<?= $key->layoutId ?>"><button>Edit</button></a>
+                        <a href="<?= base_url() ?>layout/publish/<?= $key->layoutId ?>"><button>Publish</button></a>
+                        <a href="<?= base_url() ?>layout/delete/<?= $key->layoutId ?>"><button>delete</button></a>
+                        </select>
                       </td>
                     </tr>
                   <?php } ?>
@@ -281,7 +283,7 @@
   <script src="<?= base_url('assets/'); ?>js/main.js"></script>
   <!-- tawk chat JS
 		============================================ -->
-  <script src="<?= base_url('assets/'); ?>js/tawk-chat.js"></script>
+
 </body>
 
 </html>

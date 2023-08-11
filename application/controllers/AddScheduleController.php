@@ -133,10 +133,10 @@ class AddScheduleController extends CI_Controller
     $result = json_decode($response);
 
     if ($result->error == null) {
-      $this->session->set_flashdata('succ_msg', 'Berhasil menambahkan layout!');
+      $this->session->set_flashdata('succ_msg', 'Berhasil membuat event!');
       redirect('schedule');
     } else {
-      $this->session->set_flashdata('error', 'Gagal menambahkan layout!, ' . $result->message);
+      $this->session->set_flashdata('error', 'Gagal menambahkan event!, ' . $result->message);
       redirect('schedule');
     }
 

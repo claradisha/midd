@@ -118,34 +118,16 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <?= form_open_multipart('media/postMedia') ?>
             <div class="dropzone-pro mg-tb-30">
-              <!-- <div id="dropzone1" class="multi-uploader-cs" >
-                                <form action="/upload" class="dropzone dropzone-custom needsclick" id="demo1-upload" name="files">
-                                    <div class="dz-message needsclick download-custom">
-                                        <i class="fa fa-download" aria-hidden="true"></i>
-                                        <h2>Drop files here or click to upload.</h2>
-                                        <p><span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
-                                        </p>
-                                    </div>
-                                </form>
-                            </div> -->
+
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <label class="login2 pull-left pull-left-pro">image</label>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <input type="file" class="form-control" id="urlMedia" name="urlMedia" value="upload">
-                  <p>Please provide the remote Url to the file </p>
+                  <input type="file" class="form-control" id="mediaFile" name="mediaFile" value="upload">
+                  <p>With Image format png,jpg, jpeg </p>
                 </div>
               </div>
-              <!-- <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <label class="login2 pull-left pull-left-pro">Media Name</label>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <input type="file" class="form-control" id="fileMedia" name="fileMedia" value="upload">
-                  <p>The name of the media (1 - 50 character)</p>
-                </div>
-              </div> -->
 
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -220,9 +202,7 @@
   <!-- main JS
 		============================================ -->
   <script src="<?= base_url('assets/'); ?>js/main.js"></script>
-  <!-- tawk chat JS
-		============================================ -->
-  <script src="<?= base_url('assets/'); ?>js/tawk-chat.js"></script>
+
 </body>
 
 </html>

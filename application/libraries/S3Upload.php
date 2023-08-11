@@ -24,8 +24,8 @@ class S3Upload
                 'region'  => 'id-jkt-1-default',
                 'endpoint' => 'https://is3.cloudhost.id/images',
                 'credentials' => [
-                    'key'    => "8QWJP2P85ZX21Z7S3DTG",
-                    'secret' => "jfISoA6pQJjoCQYUPtrKeoniDLUQDNzxEwNPPxff"
+                    'key'    => "7WAT9UY96UHTANQU11XH",
+                    'secret' => "BV7Brbcktxy561KWW5Syuf0kBGasK2CCwV6cefMo"
                 ]
             ]);
 
@@ -33,7 +33,7 @@ class S3Upload
                 'Bucket'     => 'xibo',
                 'Key'        => $file_name,
                 'SourceFile' => $temp_file_location,    // like /var/www/vhosts/mysite/file.csv
-                'ContentType' => 'application/png',
+                'ContentType' => 'image/png',
                 'ACL'        => 'public-read',
             ]);
             return "https://is3.cloudhost.id/xibo/images/" . $file_name;
@@ -42,6 +42,37 @@ class S3Upload
         }
     }
 
+    public function UploadVideo($Video)
+    {
+        if (isset($Video)) {
+            $file_name = $Video['name'];
+            $temp_file_location = $Video['tmp_name'];
+
+            $new_name = time() . md5($file_name);
+            $config['file_name'] = $new_name;
+
+            $client = S3Client::factory([
+                'version' => 'latest',
+                'region'  => 'id-jkt-1-default',
+                'endpoint' => 'https://is3.cloudhost.id/video',
+                'credentials' => [
+                    'key'    => "7WAT9UY96UHTANQU11XH",
+                    'secret' => "BV7Brbcktxy561KWW5Syuf0kBGasK2CCwV6cefMo"
+                ]
+            ]);
+
+            $client->putObject([
+                'Bucket'     => 'xibo',
+                'Key'        => $file_name,
+                'SourceFile' => $temp_file_location,    // like /var/www/vhosts/mysite/file.csv
+                'ContentType' => 'video/mp4',
+                'ACL'        => 'public-read',
+            ]);
+            return "https://is3.cloudhost.id/xibo/video/" . $file_name;
+        } else {
+            return "No Video";
+        }
+    }
     public function UploadFile($files_name, $file_tmp, $folder)
     {
         if (isset($files_name) && isset($file_tmp)) {

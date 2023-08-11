@@ -119,11 +119,63 @@ class LayoutController extends CI_Controller
     $this->load->view('layout/v_add_layout');
     $this->load->view('template/footer');
   }
-  // public function designLayout () 
-  // {
 
-  // }
 
+  public function publishLayout($id)
+  {
+
+
+    // $id = $id_layout;
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => 'https://xibo.yntkts.my.id/api/layout/publish/' . $id,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'PUT',
+      CURLOPT_POSTFIELDS => 'publishNow=on&publishDate=',
+      CURLOPT_HTTPHEADER => array(
+        'Authorization: ' . $this->session->userdata('access_token')
+      ),
+    ));
+
+    $response = curl_exec($curl);
+
+    curl_close($curl);
+
+    redirect("layout");
+  }
+
+  public function deleteLayout($idlayout)
+  {
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => 'https://xibo.yntkts.my.id/api/layout/' . $idlayout,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'DELETE',
+      CURLOPT_HTTPHEADER => array(
+        'Authorization: ' . $this->session->userdata('access_token'),
+        'Cookie: PHPSESSID=7do57sb548ci31eiul6pupkagb'
+      ),
+    ));
+
+    $response = curl_exec($curl);
+
+    curl_close($curl);
+    redirect("layout");
+  }
 }
 
 
